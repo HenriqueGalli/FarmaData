@@ -36,7 +36,7 @@ public class Medicamento {
         return Valor;
     }
 
-    public Medicamento(@JsonProperty("id") Integer id,@JsonProperty("NomeComercial") String nomeComercial,
+    public Medicamento(@JsonProperty("Id") Integer id,@JsonProperty("NomeComercial") String nomeComercial,
                        @JsonProperty("Fabricante") String fabricante,@JsonProperty("NomeGenerico") String nomeGenerico,
                        @JsonProperty("BulaRemedio") String bulaRemedio, @JsonProperty("Valor") Double valor) {
         Id = id;

@@ -1,6 +1,7 @@
 package com.farma.demo.dao;
 
 import com.farma.demo.model.Medicamento;
+import com.mysql.jdbc.CallableStatement;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -13,30 +14,54 @@ import java.util.List;
 @Repository("medicamentoDao")
 public class MedicamentoDataAccessService implements MedicamentoDao {
 
-    private List<Medicamento> listMedicamentos = new ArrayList<>();
     Connection connection = ConectDataBase.conectDb();
     PreparedStatement preparedStatement;
+    CallableStatement callableStatement = null;
+
 
     @Override
     public int insertMedicamento(Medicamento medicamento) {
         try{
-            String insert = "INSERT INTO medicamento (NomeComercial, Fabricante, NomeGenerico, BulaRemedio, Valor) VALUES(?,?,?,?,?)";
-            preparedStatement = connection.prepareStatement(insert);
-            preparedStatement.setString(1,medicamento.getNomeComercial());
-            preparedStatement.setString(2,medicamento.getFabricante());
-            preparedStatement.setString(3,medicamento.getNomeGenerico());
-            preparedStatement.setString(4,medicamento.getBulaRemedio());
-            preparedStatement.setDouble(5,medicamento.getValor());
-            preparedStatement.executeUpdate();
+            callableStatement = (CallableStatement) connection.prepareCall("{CALL spIncluiMedicamento(?,?,?,?,?)}");
+            callableStatement.setString(1, medicamento.getNomeComercial() );
+            callableStatement.setString(2, medicamento.getFabricante());
+            callableStatement.setString(3, medicamento.getNomeGenerico());
+            callableStatement.setString(4, medicamento.getBulaRemedio());
+            callableStatement.setDouble(5, medicamento.getValor());
+
+            callableStatement.executeUpdate();
+
             return 1;
-        }catch (SQLException e){
-            throw new RuntimeException(e);
+        }catch (Exception e) {
+            System.out.println(e);
+
+            return 0;
+        }
+    }
+
+    @Override
+    public int deleteMedicamento(Integer id){
+        try{
+            callableStatement = (CallableStatement) connection.prepareCall("{CALL spDeleteEstoque(?)}");
+            callableStatement.setInt(1, id );
+            callableStatement.executeUpdate();
+
+            callableStatement = (CallableStatement) connection.prepareCall("{CALL spDeleteMedicamento(?)}");
+            callableStatement.setInt(1, id );
+            callableStatement.executeUpdate();
+
+            return 1;
+        }catch (Exception e){
+            System.out.println(e);
+
+            return 0;
         }
     }
 
     @Override
     public List<Medicamento> getMedicamentoList() {
         try{
+            List<Medicamento> listMedicamentos = new ArrayList<>();
             String select = "call spListaMedicamentos";
             preparedStatement = connection.prepareStatement(select);
             ResultSet medicamentosResponse = preparedStatement.executeQuery(select);
@@ -47,10 +72,9 @@ public class MedicamentoDataAccessService implements MedicamentoDao {
                         Double.parseDouble(medicamentosResponse.getString("Valor")));
                 listMedicamentos.add(medicamento);
             }
-
+            return listMedicamentos;
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
-        return listMedicamentos;
     }
 }

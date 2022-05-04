@@ -27,4 +27,9 @@ public class MedicamentoController {
         return medicamentoService.getMedicamentoList();
     }
 
+    @DeleteMapping
+    public void removeMedicamento(@RequestParam("Id") Integer id){
+        medicamentoService.removeMedicamento(id);
+    }
+
 }
