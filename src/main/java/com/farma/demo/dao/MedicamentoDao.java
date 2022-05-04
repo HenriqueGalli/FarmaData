@@ -12,6 +12,10 @@ public interface MedicamentoDao {
         return insertMedicamento(medicamento);
     }
 
+    default int editMedicamento(Medicamento medicamento){
+        return editMedicamento(medicamento);
+    }
+
     default int deleteMedicamento(Integer id){
         return deleteMedicamento(id);
     }

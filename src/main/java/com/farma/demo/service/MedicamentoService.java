@@ -23,6 +23,10 @@ public class MedicamentoService {
         return medicamentoDao.insertMedicamento(medicamento);
     }
 
+    public int editMedicamento(Medicamento medicamento) {
+        return medicamentoDao.editMedicamento(medicamento);
+    }
+
     public int removeMedicamento(Integer id){
         return medicamentoDao.deleteMedicamento(id);
     }

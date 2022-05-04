@@ -22,6 +22,11 @@ public class MedicamentoController {
         medicamentoService.addMedicamento(medicamento);
     }
 
+    @PutMapping
+    public void editMedicamento(@RequestBody Medicamento medicamento) {
+        medicamentoService.editMedicamento(medicamento);
+    }
+
     @GetMapping
     public List<Medicamento> getMedicamentoList(){
         return medicamentoService.getMedicamentoList();

@@ -40,6 +40,28 @@ public class MedicamentoDataAccessService implements MedicamentoDao {
     }
 
     @Override
+    public int editMedicamento(Medicamento medicamento) {
+        try{
+            callableStatement = (CallableStatement) connection.prepareCall("{CALL spEditaMedicamento(?,?,?,?,?,?)}");
+
+            callableStatement.setInt(1, medicamento.getId());
+            callableStatement.setString(2, medicamento.getNomeComercial());
+            callableStatement.setString(3, medicamento.getFabricante());
+            callableStatement.setString(4, medicamento.getNomeGenerico());
+            callableStatement.setString(5, medicamento.getBulaRemedio());
+            callableStatement.setDouble(6, medicamento.getValor());
+
+            callableStatement.executeUpdate();
+
+            return 1;
+        }catch (Exception e) {
+            System.out.println(e);
+
+            return 0;
+        }
+    }
+
+    @Override
     public int deleteMedicamento(Integer id){
         try{
             callableStatement = (CallableStatement) connection.prepareCall("{CALL spDeleteEstoque(?)}");
