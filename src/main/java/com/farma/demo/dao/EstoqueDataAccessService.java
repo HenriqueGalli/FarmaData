@@ -1,6 +1,8 @@
 package com.farma.demo.dao;
 
 import com.farma.demo.model.Estoque;
+import com.mysql.jdbc.CallableStatement;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.mvc.method.annotation.ExtendedServletRequestDataBinder;
 
@@ -16,6 +18,7 @@ public class EstoqueDataAccessService implements EstoqueDao {
 
     Connection connection = ConectDataBase.conectDb();
     PreparedStatement preparedStatement;
+    CallableStatement callableStatement = null;
 
     @Override
     public List<Estoque> getEstoqueList() {
@@ -41,6 +44,21 @@ public class EstoqueDataAccessService implements EstoqueDao {
 
     @Override
     public int editEstoque(Estoque estoque) {
-        return EstoqueDao.super.editEstoque(estoque);
+        //return EstoqueDao.super.editEstoque(estoque);
+
+        try{
+            callableStatement = (CallableStatement) connection.prepareCall("{CALL spAlteraQuantidadeEstoque	(?,?)}");
+
+            callableStatement.setInt(1, estoque.getQuantidade());
+            callableStatement.setInt(2, estoque.getId());
+
+            callableStatement.executeUpdate();
+
+            return 1;
+        }catch (Exception e) {
+            System.out.println(e);
+
+            return 0;
+        }
     }
 }

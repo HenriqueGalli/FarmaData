@@ -4,6 +4,8 @@ import com.farma.demo.model.Estoque;
 import com.farma.demo.service.EstoqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +24,11 @@ public class EstoqueController {
     @GetMapping
     public List<Estoque> getListEstoque() {
         return estoqueService.getEstoqueList();
+    }
+
+    @PutMapping
+    public void editEstoque(@RequestBody Estoque estoque) {
+        estoqueService.editEstoque(estoque);
     }
 
 }
