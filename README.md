@@ -2,10 +2,10 @@
 Projeto com o objetivo de desenvolver um gerenciador de estoque para uma farmácia.
 <h3>Funcionalidades em desenvolvimento:</h3> 
 <ol>
-  <h5>Cadastrar medicamentos</h5>
-  <h5>Editar e excluir medicamento</h5>
-  <h5>Listar medicamentos cadastrados</h5>
-  <h5>Alterar a quantidade do estoque</h5>
+  <ul>Cadastrar medicamentos</ul>
+  <ul>Editar e excluir medicamento</ul>
+  <ul>Listar medicamentos cadastrados</ul>
+  <ul>Alterar a quantidade do estoque</ul>
 </ol>
 
 <h3>Desenvolvedores:</h3>
