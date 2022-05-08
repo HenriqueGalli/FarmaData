@@ -1,12 +1,12 @@
 <h1>FarmaData</h1>
 Projeto com o objetivo de desenvolver um gerenciador de estoque para uma farmácia.
 <h3>Funcionalidades em desenvolvimento:</h3> 
-<ul>
+<ol>
   <h5>Cadastrar medicamentos</h5>
   <h5>Editar e excluir medicamento</h5>
   <h5>Listar medicamentos cadastrados</h5>
   <h5>Alterar a quantidade do estoque</h5>
-</ul>
+</ol>
 
 <h3>Desenvolvedores:</h3>
 Henrique Bragante Galli RA:081190044
