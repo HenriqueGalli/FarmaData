@@ -12,6 +12,6 @@ Projeto com o objetivo de desenvolver um gerenciador de estoque para uma farmác
 <ul>
   <ol>Henrique Bragante Galli RA:081190044</ol>
   <ol>Renan Oliveira França RA:0811900</ol>
-  <ol>Marcio Rios Kunimura RA:0811900</ol>
+  <ol>Marcio Rios Kunimura RA:081200041</ol>
   <ol>William Massao Saito RA:081190001</ol>
 </ul>  
