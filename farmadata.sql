@@ -58,6 +58,12 @@ END$$
 
 DELIMITER ;
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteMedicamento` (IN `uId` INT)
+DELETE FROM medicamento WHERE Id = uId;
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteEstoque` (IN `uId` INT)
+DELETE FROM estoque WHERE Id = uId;
+
 -- --------------------------------------------------------
 
 --

@@ -50,7 +50,7 @@ public class EstoqueDataAccessService implements EstoqueDao {
             callableStatement = (CallableStatement) connection.prepareCall("{CALL spAlteraQuantidadeEstoque	(?,?)}");
 
             callableStatement.setInt(1, estoque.getQuantidade());
-            callableStatement.setInt(2, estoque.getId());
+            callableStatement.setInt(2, estoque.getIdMedicamento());
 
             callableStatement.executeUpdate();
 
