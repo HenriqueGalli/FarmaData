@@ -28,6 +28,7 @@ public class MedicamentoController {
     }
 
     @GetMapping
+    @CrossOrigin
     public List<Medicamento> getMedicamentoList(){
         return medicamentoService.getMedicamentoList();
     }
