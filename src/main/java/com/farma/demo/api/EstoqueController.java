@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class EstoqueController {
         return estoqueService.getEstoqueList();
     }
 
-    @PatchMapping
+    @PutMapping
     @CrossOrigin
     public void editEstoque(@RequestBody Estoque estoque) {
         estoqueService.editEstoque(estoque);
