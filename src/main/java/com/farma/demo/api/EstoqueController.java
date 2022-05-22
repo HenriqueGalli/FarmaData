@@ -3,6 +3,7 @@ package com.farma.demo.api;
 import com.farma.demo.model.Estoque;
 import com.farma.demo.service.EstoqueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,11 +23,13 @@ public class EstoqueController {
     }
 
     @GetMapping
+    @CrossOrigin
     public List<Estoque> getListEstoque() {
         return estoqueService.getEstoqueList();
     }
 
     @PatchMapping
+    @CrossOrigin
     public void editEstoque(@RequestBody Estoque estoque) {
         estoqueService.editEstoque(estoque);
     }
