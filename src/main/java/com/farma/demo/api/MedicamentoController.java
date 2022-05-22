@@ -18,11 +18,13 @@ public class MedicamentoController {
     }
 
     @PostMapping
+    @CrossOrigin
     public void addMedicamento(@RequestBody Medicamento medicamento) {
         medicamentoService.addMedicamento(medicamento);
     }
 
     @PutMapping
+    @CrossOrigin
     public void editMedicamento(@RequestBody Medicamento medicamento) {
         medicamentoService.editMedicamento(medicamento);
     }
@@ -34,6 +36,7 @@ public class MedicamentoController {
     }
 
     @DeleteMapping
+    @CrossOrigin
     public void removeMedicamento(@RequestParam("Id") Integer id){
         medicamentoService.removeMedicamento(id);
     }
